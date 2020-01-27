@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body> 
+
+  <!-- <style>
+    body{background-color: blue;
+      background-image: url(city.jpg);
+    }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    
+    </style> -->
+    
+    <h1>Hello, {{user.name}}</h1>
+
+
+    <h1>Your Trip Schudules</h1>
+    <table>
+        <tr>
+          <th>Destination</th>
+          <th>Travel date</th>
+          <th>Travel End date</th>
+          <th>plan</th>
+        </tr>
+    <!-- {% if loggeuser %} -->
+        {% for x in  loggeuser %} 
+        <tr>
+          <td><a href="/travels/destination/{{x.id}}">{{x.destination}}</a></td>
+          <td>{{x.startdate }}</td>
+          <td>{{x.enddate}}</td>
+          <td>{{x.description}}</td>
+        </tr>
+        {% endfor %}
+    <!-- {% endif %} -->
+        
+
+
+      </table>
+
+      <h1>Other Trip Schudules</h1>
+         
+
+  
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Destination</th>
+          <th>Travel Startdate</th>
+          <th>travel Enddate</th>
+          <th>Do you want to joint</th>
+        </tr>
+    <!-- {% if differenttrips %} -->
+        {% for i in differenttrips%} 
+        <tr>
+          <td>{{ i.created_by.name}}</td>
+          <td><a href="/travels/destination/{{i.id}}">{{ i.destination }}</a></td>
+          <td>{{ i.startdate }}</td>
+          <td>{{ i.enddate }}</td>
+          <td>  <a href="/travels/join/{{i.id}}"> Join</a></td>
+        </tr>
+        {% endfor %}
+    <!-- {% endif %} -->
+        
+
+      </table>
+    <li><a href="travels/add">Add A Travel Plan</a></li> 
+    <li><a href="/logout">Logout</a></li>
+</body>
+</html>

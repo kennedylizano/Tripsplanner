@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{viweId.destination}}</h1>
+    <h2>Planed By: {{viweId.created_by.name}}</h2>
+     <h2>Deescription : {{viweId.description}}</h2>
+     <h2>Travel date : {{viweId.startdate}}</h2>
+     <h2>Travel date to: {{viweId.enddate}}</h2>
+
+
+     <h1>Other User Joining the Trip:</h1>
+
+    {% for x in viweId.participants.all %}
+     <p>{{x.name}} </p>
+    {% endfor %}
+
+    <td><a href="/travels"> Home</a></td>
+    <td><a href="/logout"> Logout</a></td>
+</body>
+</html>
